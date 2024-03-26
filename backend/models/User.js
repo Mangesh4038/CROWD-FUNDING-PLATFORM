@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model("User", UserSchema); // Changed "user" to "User"
-User.createIndexes();
+UserSchema.index({ email: 1 }); // Create an index on the email field
 
-module.exports = User; // Export the User model, not mongoose
+const User = mongoose.model("User", UserSchema);
+module.exports = User;
